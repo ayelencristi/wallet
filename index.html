@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/5c3ddfe6b4.js" crossorigin="anonymous"></script>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <title>Wallet</title>
+</head>
+
+<body>
+
+  <!--NAV-->
+  <header>
+    <nav class="nav p-2 navbar-expand-lg">
+      <h1> <i class="fas fa-wallet"></i> Wallet </h1>
+      <div class="ms-auto">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" aria-current="page" href="./index.html"><i
+                class="fas fa-chart-line"></i>Balance</a>
+            <a class="nav-item nav-link" href="./categories.html"><i class="fas fa-tag"></i>Categorías</a>
+            <a class="nav-item nav-link" href="./report.html"><i class="fas fa-chart-pie"></i>Reportes</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!--MAIN Y ASIDE-->
+  <div class="container " id="div-main">
+    <!--BALANCE Y FILTROS (ASIDE)-->
+    <div class="row m-4">
+      <aside class="col-12 mt-4 col-xl-4">
+
+        <div class="row">
+          <div class="col-12 b-r-5 shadow box-balance">
+            <h2 class="mt-4">Balance</h2>
+
+            <div class="row mt-4">
+              <div class="col-6">Ganancias</div>
+              <div class="col-6 text-end">
+                $<span id="div-gain">0</span>
+              </div>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-6">Gastos</div>
+              <div class="col-6 text-end">
+                $<span id="div-expense">0</span>
+              </div>
+            </div>
+
+            <div class="row mt-4 mb-4">
+              <div class="col-6">Total</div>
+              <div class="col-6 text-end">
+                $ <span id="div-total">0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="box-balance mt-4 shadow">
+            <form class="row g-3 needs-validation" novalidate>
+              <div class="col">
+                <h2 class="mt-4">Filtros</h2>
+                <p class="text-end">Ocultar filtros</p>
+                <label for="inputState" class="form-label">
+                  <h5>Tipo</h5>
+                </label>
+                <select id="inputState" class="form-select">
+                  <option selected value="todos">Todos</option>
+                  <option value="gasto">Gasto</option>
+                  <option value="ganancia">Ganancia</option>
+                </select>
+
+                <label for="inputState" class="form-label mt-4">
+                  <h5>Categoría</h5>
+                </label>
+                <select id="select-categories" class="form-select">
+                </select>
+
+                <div class="mb-3 mt-4">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    <h5>Fecha</h5>
+                  </label>
+                  <input type="date" class="form-control" id="id-date">
+                </div>
+
+                <label for="inputState" class="form-label mt-4">
+                  <h5>Ordenar por</h5>
+                </label>
+                <select id="inputState" class="form-select mb-4">
+                  <option selected>Más reciente</option>
+                  <option>Menos reciente</option>
+                  <option>Mayor monto</option>
+                  <option>Menor monto</option>
+                  <option>A/Z</option>
+                  <option>Z/A</option>
+                </select>
+            </form>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="col-12 col-xl-8 ">
+        <div class="box-balance shadow mt-4 ">
+          <div class="row">
+            <div class="col-xl-6 col-10 ">
+              <h4 class="mt-4 ms-4">Operaciones</h4>
+            </div>
+
+            <div class="d-flex justify-content-end col-6">
+              <a href="./operation.html" class="btn btn-primary m-4 colour-btn" id="btn-new-operation"> + Nueva
+                operación</a>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-center" id="div-img-home">
+
+            <div class="size m-4">
+              <img src="./assets/images/undraw_wallet_aym5.svg" class="img-fluid mt-4" width="300px" alt="">
+              <h3>Sin resultados</h3>
+              <p> Cambia los filtros o agrega operaciones</p>
+            </div>
+          </div>
+
+          <div class="container d-none" id="div-table-operations">
+            <table class="table" id="operations">
+              <thead>
+                <tr>
+                  <th scope="col">Descripción</th>
+                  <th scope="col">Categoría</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Monto</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+    </main>
+  </div>
+
+  <!--SECCIÓN FOOTER-->
+  <footer>
+    <ul class="nav-iconos">
+      <li class="iconos-footer">
+        <a href="" class="iconos-redes-footer">
+          <i class="fab fa-twitter fa-lg relleno-iconos"></i>
+        </a>
+      </li>
+
+      <li class="iconos-footer">
+        <a href="" class="iconos-redes-footer">
+          <i class="fab fa-discord fa-lg relleno-iconos"></i>
+        </a>
+      </li>
+
+      <li class="iconos-footer">
+        <a href="" class="iconos-redes-footer">
+          <i class="fas fa-envelope fa-lg relleno-iconos"></i>
+        </a>
+      </li>
+    </ul>
+    <p class="hecho-con-amor">Contactanos ❤️</p>
+  </footer>
+  <script src="./assets/js/bootstrap.min.js"></script>
+  <script src="./assets/js/scripts.js"></script>
+  <script src="./assets/js/home.js"></script>
+  <script src="./assets/js/operation.js"></script>
+</body>
+
+</html>

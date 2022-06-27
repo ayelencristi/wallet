@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/5c3ddfe6b4.js" crossorigin="anonymous"></script>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <title>Nueva Operación</title>
+</head>
+
+<body>
+  <!--NAV-->
+  <header>
+    <nav class="nav p-2 navbar-expand-lg">
+
+      <h1> <i class="fas fa-wallet"></i> AhorrADAs </h1>
+
+      <div class="ms-auto">
+        <button class="colour-btn navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"> <i class="fas fa-align-justify "></i> </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" aria-current="page" href="./index.html"><i
+                class="fas fa-chart-line"></i>Balance</a>
+            <a class="nav-item nav-link" href="./categories.html"><i class="fas fa-tag"></i>Categorías</a>
+            <a class="nav-item nav-link" href="./report.html"><i class="fas fa-chart-pie"></i>Reportes</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+  <!--NUEVA OPERACION-->
+  <div class="container" id="div-new-operation">
+    <div class="row box-balance m-4 shadow">
+      <form id="form-operation" class="g-3 needs-validation" novalidate>
+        <div class="m-4">
+          <h2 class="mt-4">Nueva operación</h2>
+
+          <!--Descripción-->
+          <div class="mt-4">
+            <label for="inputState" class="form-label">
+              <h5>Descripción</h5>
+            </label>
+            <input type="text" class="form-control" id="descriptionOp">
+          </div>
+          <!--Monto-->
+          <div class="mt-4">
+            <label for="inputState" class="form-label">
+              <h5>Monto</h5>
+            </label>
+            <input type="number" class="form-control" id="amountOp">
+          </div>
+
+          <!--Tipo-->
+          <div class="mt-4">
+            <label for="inputState" class="form-label">
+              <h5>Tipo</h5>
+            </label>
+            <select class="form-select" id="selectType">
+              <option value="gasto">Gasto</option>
+              <option value="ganancia">Ganancia</option>
+            </select>
+          </div>
+
+          <!--Categorias-->
+          <div class="mt-4">
+            <label for="inputState" class="form-label">
+              <h5>Categoría</h5>
+            </label>
+            <select class="form-select" id="selectCategoriesOp">
+
+            </select>
+          </div>
+
+          <!--Fecha-->
+          <div class="mb-3 mt-4">
+            <label class="form-label">
+              <h5>Fecha</h5>
+            </label>
+            <input type="date" class="form-control" id="dateOp">
+          </div>
+
+
+          <!--Botones Agregar/Cancelar-->
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
+            <a href="index.html" class="btn btn-light me-md-2" type="" id="btn-cancel">Cancelar</a>
+            <button onclick="window.location.href='index.html'" class="btn btn-primary colour-btn" type="submit"
+              id="btn-add-operation">Agregar</button>
+
+          </div>
+      </form>
+    </div>
+  </div>
+  <script src="./assets/js/bootstrap.min.js"></script>
+  <script src="./assets/js/scripts.js"></script>
+  <script src="./assets/js/home.js"></script>
+  <script src="./assets/js/operation.js"></script>
+
+</body>
+
+</html>
