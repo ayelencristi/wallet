@@ -19,17 +19,20 @@ var loadCategoriesTable = function () {
     lstorage.categories.forEach(function (category) {
         var tr = document.createElement('tr');
         var tdCategory = document.createElement('td');
-        var tdEdit = document.createElement('td');
+        // var tdEdit = document.createElement('td');
         var tdDelete = document.createElement('td');
-        var aEdit = document.createElement('a');
-        var aDelete = document.createElement('a');
+        // var aEdit = document.createElement('a');
+        var aDelete = document.createElement("a");
+        aDelete.classList.add('color-a');
         tdCategory.appendChild(document.createTextNode(category.name));
-        tdEdit.appendChild(document.createTextNode('Editar'));
-        tdDelete.appendChild(document.createTextNode('Eliminar'));
-        aEdit.appendChild(tdEdit);
-        aDelete.appendChild(tdDelete);
+        // tdEdit.appendChild(document.createTextNode('Editar'));
+        var iconTrash = aDelete.appendChild(document.createElement('i'));
+        iconTrash.classList.add("fa-solid")
+        iconTrash.classList.add("fa-trash-can")
+        // aEdit.appendChild(tdEdit);
+        tdDelete.appendChild(aDelete);
         tr.appendChild(tdCategory);
-        tr.appendChild(tdEdit);
+        // tr.appendChild(tdEdit);
         tr.appendChild(tdDelete);
         tbody.appendChild(tr);
     });
@@ -52,3 +55,6 @@ var createCategory = function (e) {
     refresh();
 };
 formCategory.addEventListener('submit', createCategory);
+
+
+//FUNCION ELIMINAR CATEGORIA

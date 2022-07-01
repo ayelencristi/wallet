@@ -28,13 +28,17 @@ var loadOperationTable = function () {
         var tdDate = document.createElement("td");
         var tdAmount = document.createElement("td");
         var tdAction = document.createElement("td");
-        var editAction = document.createElement("a");
-        var deleteAction = document.createElement("button");
+        // var editAction = document.createElement("a");
+        var deleteAction = document.createElement("a");
+        deleteAction.classList.add('color-a')
+        var iconTrash = deleteAction.appendChild(document.createElement('i'));
+        iconTrash.classList.add("fa-solid")
+        iconTrash.classList.add("fa-trash-can")
         tdDescription.appendChild(document.createTextNode(operation.description));
         tdCategory.appendChild(document.createTextNode(operation.category.name));
         tdDate.appendChild(document.createTextNode(operation.date));
         tdAmount.appendChild(document.createTextNode(operation.amount));
-        tdAction.appendChild(editAction);
+        // tdAction.appendChild(editAction);
         tdAction.appendChild(deleteAction);
         tr.appendChild(tdDescription);
         tr.appendChild(tdCategory);
