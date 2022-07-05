@@ -19,20 +19,16 @@ var loadCategoriesTable = function () {
     lstorage.categories.forEach(function (category) {
         var tr = document.createElement('tr');
         var tdCategory = document.createElement('td');
-        // var tdEdit = document.createElement('td');
-        var tdDelete = document.createElement('td');
-        // var aEdit = document.createElement('a');
-        var aDelete = document.createElement("a");
-        aDelete.classList.add('color-a');
+        var tdDelete = document.createElement('a');
+        // var aDelete = document.createElement("a");
+        tdDelete.classList.add('color-a');
+        tdDelete.dataset.id = category.id;
         tdCategory.appendChild(document.createTextNode(category.name));
-        // tdEdit.appendChild(document.createTextNode('Editar'));
-        var iconTrash = aDelete.appendChild(document.createElement('i'));
+        var iconTrash = tdDelete.appendChild(document.createElement('i'));
         iconTrash.classList.add("fa-solid")
         iconTrash.classList.add("fa-trash-can")
-        // aEdit.appendChild(tdEdit);
-        tdDelete.appendChild(aDelete);
+        // tdDelete.appendChild(aDelete);
         tr.appendChild(tdCategory);
-        // tr.appendChild(tdEdit);
         tr.appendChild(tdDelete);
         tbody.appendChild(tr);
     });
@@ -58,3 +54,12 @@ formCategory.addEventListener('submit', createCategory);
 
 
 //FUNCION ELIMINAR CATEGORIA
+
+// var deleteCategory = function (e) {
+//     var idCategory = e.target.dataset.id;
+//     var lstorage = getStorage();
+//     var updatedStorage = lstorage.categories.filter(function (item) { return item.id != idCategory; });
+//     localStorage.setItem('ahorradas-data', JSON.stringify(__assign(__assign({}, lstorage), { categories: updatedStorage })));
+// };
+// addEventListener('click', deleteCategory);
+// loadCategoriesTable();
