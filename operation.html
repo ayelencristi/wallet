@@ -43,7 +43,7 @@
   <!--NUEVA OPERACION-->
   <div class="container" id="div-new-operation">
     <div class="row box-balance m-4 shadow">
-      <form id="form-operation" class="g-3 needs-validation" novalidate>
+      <form id="form-operation" class="g-3 needs-validation" action="" validate>
         <div class="m-4">
           <h2 class="mt-4">Nueva operación</h2>
 
@@ -52,14 +52,14 @@
             <label for="inputState" class="form-label">
               <h5>Descripción</h5>
             </label>
-            <input type="text" class="form-control" id="descriptionOp">
+            <input type="text" class="form-control" id="descriptionOp" required>
           </div>
           <!--Monto-->
           <div class="mt-4">
             <label for="inputState" class="form-label">
               <h5>Monto</h5>
             </label>
-            <input type="number" class="form-control" id="amountOp">
+            <input type="number" class="form-control" id="amountOp" required>
           </div>
 
           <!--Tipo-->
@@ -67,7 +67,7 @@
             <label for="inputState" class="form-label">
               <h5>Tipo</h5>
             </label>
-            <select class="form-select" id="selectType">
+            <select class="form-select" id="selectType" required>
               <option value="gasto">Gasto</option>
               <option value="ganancia">Ganancia</option>
             </select>
@@ -78,7 +78,7 @@
             <label for="inputState" class="form-label">
               <h5>Categoría</h5>
             </label>
-            <select class="form-select" id="selectCategoriesOp">
+            <select class="form-select" id="selectCategoriesOp" required>
 
             </select>
           </div>
@@ -88,7 +88,7 @@
             <label class="form-label">
               <h5>Fecha</h5>
             </label>
-            <input type="date" class="form-control" id="dateOp">
+            <input type="date" class="form-control" id="dateOp" required>
           </div>
 
 
@@ -98,6 +98,7 @@
             <a href="index.html" class="btn btn-light me-md-2" type="" id="btn-cancel">Cancelar</a>
             <button onclick="window.location.href='index.html'" class="btn btn-primary colour-btn" type="submit"
               id="btn-add-operation">Agregar</button>
+            <!--VER COMO HACER FUNCIONAR SIN EL ONCLIK-->
 
           </div>
       </form>
