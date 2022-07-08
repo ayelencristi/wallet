@@ -11,7 +11,7 @@ var getIdOperation = function () {
         return 1;
     }
 };
-//FUNCION CARGAR SELECT DE CATEGORIES
+// FUNCION CARGAR SELECT DE CATEGORIES
 var selectCatOperations = document.getElementById("selectCategoriesOp");
 if (selectCatOperations)
     loadForm(selectCatOperations);
@@ -45,6 +45,9 @@ var createOperation = function (e) {
     console.log(newOp);
     lstorage.operations.push(newOp);
     localStorage.setItem("ahorradas-data", JSON.stringify(lstorage));
+    loadOperationTable();
+    refresh();
 };
 if (formOperation)
     formOperation.addEventListener("submit", createOperation);
+

@@ -55,11 +55,11 @@ formCategory.addEventListener('submit', createCategory);
 
 //FUNCION ELIMINAR CATEGORIA
 
-// var deleteCategory = function (e) {
-//     var idCategory = e.target.dataset.id;
-//     var lstorage = getStorage();
-//     var updatedStorage = lstorage.categories.filter(function (item) { return item.id != idCategory; });
-//     localStorage.setItem('ahorradas-data', JSON.stringify(__assign(__assign({}, lstorage), { categories: updatedStorage })));
-// };
-// addEventListener('click', deleteCategory);
-// loadCategoriesTable();
+var deleteCategory = function (e) {
+    var idCategory = e.target.dataset.id;
+    var lstorage = getStorage();
+    var updatedStorage = lstorage.categories.filter(function (item) { return item.id != idCategory; });
+    localStorage.setItem('ahorradas-data', JSON.stringify({ ...lstorage, categories: updatedStorage }));
+    loadCategoriesTable();
+};
+addEventListener('click', deleteCategory);

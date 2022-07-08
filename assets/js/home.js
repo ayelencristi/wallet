@@ -31,6 +31,7 @@ var loadOperationTable = function () {
         // var editAction = document.createElement("a");
         var deleteAction = document.createElement("a");
         deleteAction.classList.add('color-a')
+        deleteAction.dataset.id = operation.id;
         var iconTrash = deleteAction.appendChild(document.createElement('i'));
         iconTrash.classList.add("fa-solid")
         iconTrash.classList.add("fa-trash-can")
@@ -45,6 +46,7 @@ var loadOperationTable = function () {
         tr.appendChild(tdDate);
         tr.appendChild(tdAmount);
         tr.appendChild(tdAction);
+        // tr.appendChild(deleteAction);
         if (tableOperations) {
             var tbody = tableOperations.getElementsByTagName("tbody");
             if (tbody) {
@@ -56,6 +58,7 @@ var loadOperationTable = function () {
     }
 };
 loadOperationTable();
+
 // FUNCION MOSTRAR/OCULTAR TABLA DE OPERACIONES
 var divImgHome = document.getElementById("div-img-home");
 var divTableOperations = document.getElementById("div-table-operations");
@@ -97,3 +100,14 @@ var balance = function () {
 };
 if (divGain && divExpense && divTotal)
     balance();
+
+//FUNCION ELIMINAR OPERACION
+
+var deleteOperation = function (e) {
+    var idOperation = e.target.dataset.id;
+    var lstorage = getStorage();
+    var updatedStorage = lstorage.operations.filter(function (item) { return item.id != idOperation; });
+    localStorage.setItem('ahorradas-data', JSON.stringify({ ...lstorage, operations: updatedStorage }));
+    loadOperationTable();
+};
+addEventListener('click', deleteOperation);
