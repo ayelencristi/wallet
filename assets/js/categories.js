@@ -1,3 +1,5 @@
+var lstorage = getStorage();
+
 var getID = function () {
     if (lstorage.categories.length > 0) {
         var lastItem = lstorage.categories[lstorage.categories.length - 1];
@@ -7,38 +9,56 @@ var getID = function () {
         return 1;
     }
 };
+
 var refresh = function () {
     document.location.reload(false);
 };
+
 // CARGAR TABLA CATEGORÍAS
 var loadCategoriesTable = function () {
     var lstorage = getStorage();
+
     var tableCategories = document.getElementById('table-categories');
-    var tbody = tableCategories.getElementsByTagName('tbody')[0];
+    var tbody = tableCategories.querySelector('tbody');
+
     tbody.innerHTML = "";
+
     lstorage.categories.forEach(function (category) {
         var tr = document.createElement('tr');
-        var tdCategory = document.createElement('td');
+
+        // Celda texto
+        var tdText = document.createElement('td');
+        tdText.appendChild(document.createTextNode(category.name));
+
+        // Celda eliminar
         var tdDelete = document.createElement('a');
-        // var aDelete = document.createElement("a");
-        tdDelete.classList.add('color-a');
-        tdDelete.dataset.id = category.id;
-        tdCategory.appendChild(document.createTextNode(category.name));
-        var iconTrash = tdDelete.appendChild(document.createElement('i'));
-        iconTrash.classList.add("fa-solid")
-        iconTrash.classList.add("fa-trash-can")
-        // tdDelete.appendChild(aDelete);
-        tr.appendChild(tdCategory);
+        // Botón eliminar
+        var btnDelete = document.createElement('button')
+        btnDelete.classList.add('color-a');
+        btnDelete.dataset.id = category.id;
+
+        // Icono Eliminar
+        var iconTrash = document.createElement('i');
+        iconTrash.classList.add("fa-solid");
+        iconTrash.classList.add("fa-trash-can");
+        // para que al clieckear el boton, no se tome el evento del icono.
+        iconTrash.setAttribute('style', 'pointer-events: none;')
+
+        btnDelete.addEventListener('click', deleteCategory);
+
+        btnDelete.appendChild(iconTrash);
+        tdDelete.appendChild(btnDelete);
+
+        tr.appendChild(tdText);
         tr.appendChild(tdDelete);
         tbody.appendChild(tr);
     });
 };
-loadCategoriesTable();
 // FUNCION CREAR CATEGORIAS
-var formCategory = document.getElementById('form-category');
-var lstorage = getStorage();
+
 var createCategory = function (e) {
     e.preventDefault();
+
     var form = e.target;
     var newCategoryName = form.name.value;
     var newCategory = {
@@ -50,16 +70,29 @@ var createCategory = function (e) {
     loadCategoriesTable();
     refresh();
 };
+
+var formCategory = document.getElementById('form-category');
 formCategory.addEventListener('submit', createCategory);
 
 
 //FUNCION ELIMINAR CATEGORIA
 
 var deleteCategory = function (e) {
+    e.stopPropagation()
+    console.log(e.target, e.target.dataset.id)
     var idCategory = e.target.dataset.id;
     var lstorage = getStorage();
     var updatedStorage = lstorage.categories.filter(function (item) { return item.id != idCategory; });
+
+    console.log(updatedStorage);
     localStorage.setItem('ahorradas-data', JSON.stringify({ ...lstorage, categories: updatedStorage }));
     loadCategoriesTable();
 };
-addEventListener('click', deleteCategory);
+
+
+// Función inicial. Acá va todo lo que se ejecuta al cargar por primera vez.
+const initApp = () => {
+    loadCategoriesTable();
+}
+
+initApp()

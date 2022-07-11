@@ -16,10 +16,11 @@ if (selectCategories)
     loadForm(selectCategories);
 /////////////////
 // FUNCIÓN CARGAR TABLA DE OPERACIONES
-var tableOperations = document.getElementById("operations");
-var lstorage = getStorage();
 var loadOperationTable = function () {
-    // lstorage.operations.forEach((operation) => {
+    var lstorage = getStorage();
+    var tableOperations = document.getElementById("operations");
+    var tbody = tableOperations.getElementsByTagName('tbody')[0];
+    tbody.innerHTML = "";
     for (var _i = 0, _a = lstorage.operations; _i < _a.length; _i++) {
         var operation = _a[_i];
         var tr = document.createElement("tr");
@@ -27,26 +28,29 @@ var loadOperationTable = function () {
         var tdCategory = document.createElement("td");
         var tdDate = document.createElement("td");
         var tdAmount = document.createElement("td");
-        var tdAction = document.createElement("td");
-        // var editAction = document.createElement("a");
-        var deleteAction = document.createElement("a");
-        deleteAction.classList.add('color-a')
-        deleteAction.dataset.id = operation.id;
-        var iconTrash = deleteAction.appendChild(document.createElement('i'));
+        var tdAction = document.createElement("a");
+        // var deleteAction = document.createElement("a");
+        var deleteBtn = document.createElement('button');
+        deleteBtn.classList.add('color-a')
+        deleteBtn.dataset.id = operation.id;
+        var iconTrash = document.createElement('i');
         iconTrash.classList.add("fa-solid")
         iconTrash.classList.add("fa-trash-can")
+        iconTrash.setAttribute('style', 'pointer-events: none;');
+
+        deleteBtn.addEventListener('click', deleteOperation);
+
         tdDescription.appendChild(document.createTextNode(operation.description));
         tdCategory.appendChild(document.createTextNode(operation.category.name));
         tdDate.appendChild(document.createTextNode(operation.date));
         tdAmount.appendChild(document.createTextNode(operation.amount));
-        // tdAction.appendChild(editAction);
-        tdAction.appendChild(deleteAction);
+        deleteBtn.appendChild(iconTrash);
+        tdAction.appendChild(deleteBtn);
         tr.appendChild(tdDescription);
         tr.appendChild(tdCategory);
         tr.appendChild(tdDate);
         tr.appendChild(tdAmount);
         tr.appendChild(tdAction);
-        // tr.appendChild(deleteAction);
         if (tableOperations) {
             var tbody = tableOperations.getElementsByTagName("tbody");
             if (tbody) {
@@ -54,7 +58,6 @@ var loadOperationTable = function () {
                 tbodyItem.appendChild(tr);
             }
         }
-        // })
     }
 };
 loadOperationTable();
@@ -101,13 +104,21 @@ var balance = function () {
 if (divGain && divExpense && divTotal)
     balance();
 
-//FUNCION ELIMINAR OPERACION
+// FUNCION ELIMINAR OPERACION
 
 var deleteOperation = function (e) {
+    e.stopPropagation()
     var idOperation = e.target.dataset.id;
     var lstorage = getStorage();
     var updatedStorage = lstorage.operations.filter(function (item) { return item.id != idOperation; });
+
     localStorage.setItem('ahorradas-data', JSON.stringify({ ...lstorage, operations: updatedStorage }));
     loadOperationTable();
 };
-addEventListener('click', deleteOperation);
+
+const initApp = () => {
+    loadOperationTable();
+    balance();
+}
+
+initApp()
