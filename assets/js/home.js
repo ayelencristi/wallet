@@ -21,13 +21,13 @@ exampleModal.addEventListener('show.bs.modal', event => {
 
     const button = event.relatedTarget
 
-    const recipient = button.getAttribute('data-bs-whatever')
+    // const recipient = button.getAttribute('data-bs-whatever')
 
     const modalTitle = exampleModal.querySelector('.modal-title')
     const modalBodyInput = exampleModal.querySelector('.modal-body input')
 
-    modalTitle.textContent = `Inicio de sesión`
-    modalBodyInput.value = recipient
+    modalTitle.innerHTML = `Inicio de sesión <i class="fa-solid fa-user-clock">`
+    // modalBodyInput.value = recipient
 })
 
 //FUNCION INCIO DE SESION
@@ -54,6 +54,8 @@ let login = function (e) {
         errorMessage.innerText = `Usuario y/o contraseña incorrectos. Intente de nuevo`
         errorMessage.style.color = 'red';
         modalBody.appendChild(errorMessage);
+        const modalTitle = exampleModal.querySelector('.modal-title')
+        modalTitle.innerHTML = `Inicio de sesión <i class="fa-solid fa-user-xmark"></i>`
     }
 }
 btnEnterUser.addEventListener('click', login)
@@ -71,7 +73,9 @@ var loadOperationTable = function () {
         var tdCategory = document.createElement("td");
         var tdDate = document.createElement("td");
         var tdAmount = document.createElement("td");
-        var tdAction = document.createElement("a");
+        var tdAction = document.createElement("td");
+        tdAction.style.display = 'flex';
+        tdAction.style.justifyContent = 'center'
         // var deleteAction = document.createElement("a");
         var deleteBtn = document.createElement('button');
         deleteBtn.classList.add('color-a')
