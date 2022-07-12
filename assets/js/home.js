@@ -14,6 +14,49 @@ var loadForm = function (s) {
 };
 if (selectCategories)
     loadForm(selectCategories);
+
+// MODAL INICIO SESION
+const exampleModal = document.getElementById('exampleModal')
+exampleModal.addEventListener('show.bs.modal', event => {
+
+    const button = event.relatedTarget
+
+    const recipient = button.getAttribute('data-bs-whatever')
+
+    const modalTitle = exampleModal.querySelector('.modal-title')
+    const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+    modalTitle.textContent = `Inicio de sesión`
+    modalBodyInput.value = recipient
+})
+
+//FUNCION INCIO DE SESION
+const user = 'Ayelen';
+const password = '1234';
+let btnForgetPass = document.getElementById('btnForgetPass');
+let btnEnterUser = document.getElementById('btnEnterUser');
+let btnUser = document.getElementById('btnUser');
+let inputUser = document.getElementById('userName');
+let inputPass = document.getElementById('userPass');
+
+let login = function (e) {
+    e.preventDefault()
+    let userName = inputUser.value
+    let userPass = inputPass.value
+    if (userName === user && userPass === password) {
+        btnUser.innerHTML = `<i class="fa-solid fa-user"></i></i>${userName}`
+        btnEnterUser.setAttribute('data-bs-dismiss', 'modal');
+    }
+    else {
+        let modalBody = document.getElementById('modalBody');
+        console.log(modalBody)
+        let errorMessage = document.createElement('p');
+        errorMessage.innerText = `Usuario y/o contraseña incorrectos. Intente de nuevo`
+        errorMessage.style.color = 'red';
+        modalBody.appendChild(errorMessage);
+    }
+}
+btnEnterUser.addEventListener('click', login)
 /////////////////
 // FUNCIÓN CARGAR TABLA DE OPERACIONES
 var loadOperationTable = function () {

@@ -21,6 +21,9 @@
       <div class="ms-auto">
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
           <div class="navbar-nav">
+            <button type="button" id="btnUser" class="btn colour-btn" data-bs-toggle="modal"
+              data-bs-target="#exampleModal" data-bs-whatever="usuario"><i class="fa-solid fa-user"></i></i>Iniciar
+              sesión</button>
             <a class="nav-item nav-link" aria-current="page" href="./index.html"><i
                 class="fas fa-chart-line"></i>Balance</a>
             <a class="nav-item nav-link" href="./categories.html"><i class="fas fa-tag"></i>Categorías</a>
@@ -30,6 +33,36 @@
       </div>
     </nav>
   </header>
+
+  <!--MODAL INICIO DE SESION-->
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Iniciar sesión</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div id="modalBody" class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Usuario</label>
+              <input type="text" class="form-control" id="userName" required>
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Contraseña</label>
+              <input class="form-control" id="userPass" required></input>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btnForgetPass" class="btn btn-secondary" data-bs-dismiss="modal">Olvide mi
+            contraseña</button>
+          <button type="button" id="btnEnterUser" class="btn colour-btn">Ingresar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!--MAIN Y ASIDE-->
   <div class="container " id="div-main">
