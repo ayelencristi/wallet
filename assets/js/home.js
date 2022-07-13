@@ -44,7 +44,7 @@ let login = function (e) {
     let userName = inputUser.value
     let userPass = inputPass.value
     if (userName === user && userPass === password) {
-        btnUser.innerHTML = `<i class="fa-solid fa-user"></i></i>${userName}`
+        btnUser.innerHTML = `<i class="fa-solid fa-user"></i></i> ${userName}`
         btnEnterUser.setAttribute('data-bs-dismiss', 'modal');
     }
     else {
@@ -59,6 +59,8 @@ let login = function (e) {
     }
 }
 btnEnterUser.addEventListener('click', login)
+
+//FUNCION IR A SIGN UP
 /////////////////
 // FUNCIÓN CARGAR TABLA DE OPERACIONES
 var loadOperationTable = function () {
