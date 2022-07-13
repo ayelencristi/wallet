@@ -10,6 +10,7 @@ header {
     color: #157461;
 }
 
+
 .nav-link {
     color: #157461;
 }
@@ -53,8 +54,8 @@ header {
 }
 
 .color-a {
-    background-color: #44F0CD;
-    color: white;
+    background-color: white;
+    color: #49d6ba;
     border: 1px solid transparent;
     border-radius: 10%;
 }
@@ -64,6 +65,14 @@ header {
     background-color: #49d6ba;
     border: #49d6ba;
     color: #157461;
+}
+
+.colour-a:focus {
+    transition-duration: 0.1s;
+    background-color: #49d6ba;
+    border: #49d6ba;
+    color: #157461;
+
 }
 
 .shadow {

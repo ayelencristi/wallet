@@ -31,7 +31,7 @@ var loadCategoriesTable = function () {
         tdText.appendChild(document.createTextNode(category.name));
 
         // Celda eliminar
-        var tdDelete = document.createElement('a');
+        var tdDelete = document.createElement('td');
         // Botón eliminar
         var btnDelete = document.createElement('button')
         btnDelete.classList.add('color-a');
