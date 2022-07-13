@@ -60,7 +60,6 @@ let login = function (e) {
 }
 btnEnterUser.addEventListener('click', login)
 
-//FUNCION IR A SIGN UP
 /////////////////
 // FUNCIÓN CARGAR TABLA DE OPERACIONES
 var loadOperationTable = function () {
